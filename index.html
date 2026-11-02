@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07152d">
+<title>PLAYBOX — Play at Home</title>
+<style>
+:root{--bg:#061226;--panel:#0c1d39;--line:#203a62;--blue:#168cff;--cyan:#12d7f4;--white:#f4f8ff;--muted:#a9bad2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#102c55 0,#061226 48%);color:var(--white);font-family:Arial,sans-serif}
+.wrap{max-width:760px;margin:auto;padding:20px 15px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:900;font-size:22px;letter-spacing:1px}.tag{color:var(--cyan);font-size:12px;letter-spacing:3px;margin-top:5px}
+.hero{padding:34px 0 20px}.hero h1{font-size:clamp(30px,7vw,48px);margin:0 0 10px}.hero p{color:var(--muted);line-height:1.55;margin:0}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 12px;color:#d8e8ff;font-size:13px}
+h2{font-size:20px;margin:28px 0 13px}.packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pkg{background:linear-gradient(145deg,#102849,#0a1830);border:1px solid var(--line);border-radius:15px;padding:14px}.pkg h3{margin:0 0 5px;font-size:16px}.pkg .sub{font-size:12px;color:var(--muted);margin-bottom:9px}.pkg strong{color:#fff}.price{font-size:13px;line-height:1.7;color:#d7e7ff}
+.panel{background:#0b1a32;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}
+label{display:block;font-size:13px;color:#c4d4e9;margin:12px 0 6px}
+input,select,textarea{width:100%;background:#07152a;border:1px solid #294568;border-radius:10px;padding:12px;color:white;font-size:15px}
+button,.btn{border:0;border-radius:11px;background:linear-gradient(90deg,#087cff,#05b7ef);color:white;font-weight:800;padding:14px 18px;font-size:15px;width:100%;margin-top:16px;cursor:pointer}
+.note{font-size:12px;color:var(--muted);line-height:1.5}.status{padding:12px;border-radius:10px;background:#0d2943;color:#bfeaff;margin-top:12px;font-size:13px}
+.bookings{display:grid;gap:8px}.booking{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;color:#d9e8fa}.booking b{color:#fff}
+footer{text-align:center;color:#7890ae;font-size:12px;padding:28px 0 0}
+@media(max-width:420px){.packages{grid-template-columns:1fr}.wrap{padding:17px 13px 40px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div><div class="brand">🎮 PLAYBOX</div><div class="tag">PLAY AT HOME</div></div><div class="pill">RENTAL PS4 & PS5</div></header>
+  <section class="hero">
+    <h1>Main Seru,<br>Langsung di Rumah.</h1>
+    <p>Pilih paket PlayStation, tentukan tanggal dan jam sewa, lalu kirim permintaan booking melalui WhatsApp.</p>
+    <div class="pills"><span class="pill">🚚 Play at Home</span><span class="pill">🎮 2 stik</span><span class="pill">🕙 10.00–00.00</span></div>
+  </section>
+  <h2>Daftar Paket Harga</h2>
+  <section class="packages">
+    <article class="pkg"><h3>PS4 SMALL</h3><div class="sub">24 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp30.000</strong><br>6 jam <strong>Rp45.000</strong><br>12 jam <strong>Rp85.000</strong><br>1 hari <strong>Rp125.000</strong><br>Midnight 00.00–08.00 <strong>Rp45.000</strong></div></article>
+    <article class="pkg"><h3>PS5</h3><div class="sub">32 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp60.000</strong><br>6 jam <strong>Rp100.000</strong><br>12 jam <strong>Rp150.000</strong><br>Tambahan <strong>Rp20.000/jam</strong><br>Midnight 00.00–08.00 <strong>Rp85.000</strong></div></article>
+    <article class="pkg"><h3>PS4 MEDIUM</h3><div class="sub">27 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp35.000</strong><br>6 jam <strong>Rp55.000</strong><br>12 jam <strong>Rp90.000</strong><br>1 hari <strong>Rp130.000</strong><br>Midnight 00.00–08.00 <strong>Rp50.000</strong></div></article>
+    <article class="pkg"><h3>PS4 BIG</h3><div class="sub">32 INCH · 2 STIK</div><div class="price">2 jam <strong>Rp30.000</strong><br>4 jam <strong>Rp55.000</strong><br>6 jam <strong>Rp65.000</strong><br>1 hari <strong>Rp150.000</strong><br>&gt;6 jam tambahan <strong>Rp10.000/jam</strong><br>Midnight 00.00–08.00 <strong>Rp60.000</strong></div></article>
+  </section>
+  <h2>Booking PlayStation</h2>
+  <section class="panel">
+    <form id="bookingForm">
+      <label for="unit">Pilih paket</label>
+      <select id="unit" required><option value="">Pilih paket</option><option>PS4 SMALL</option><option>PS4 MEDIUM</option><option>PS4 BIG</option><option>PS5</option></select>
+      <label for="date">Tanggal sewa</label><input id="date" type="date" required>
+      <label for="start">Jam mulai</label><input id="start" type="time" min="10:00" max="23:00" required>
+      <label for="duration">Durasi / paket</label>
+      <select id="duration" required><option value="">Pilih durasi</option><option>2 jam</option><option>3 jam</option><option>4 jam</option><option>6 jam</option><option>12 jam</option><option>1 hari</option><option>Midnight 00.00–08.00</option></select>
+      <label for="customer">Nama pelanggan</label><input id="customer" placeholder="Nama kamu" required>
+      <label for="phone">Nomor WhatsApp</label><input id="phone" type="tel" placeholder="08xxxxxxxxxx" required>
+      <label for="address">Alamat pengantaran</label><textarea id="address" rows="2" placeholder="Alamat lengkap"></textarea>
+      <button type="submit">Kirim Permintaan Booking</button>
+      <p class="note">Permintaan akan dikirim ke WhatsApp untuk konfirmasi. Booking dianggap sah setelah dikonfirmasi oleh admin.</p>
+    </form>
+    <div id="result" class="status" hidden></div>
+  </section>
+  <h2>Catatan</h2>
+  <div class="panel note">Setiap paket hanya tersedia 1 unit. Pastikan tanggal dan jam sudah benar. Untuk sementara, ketersediaan perlu dikonfirmasi admin melalui WhatsApp sebelum booking disetujui.</div>
+  <footer>© PLAYBOX — PLAY AT HOME</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const dateInput=$('date'); const today=new Date(); dateInput.min=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);
+$('bookingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const unit=$('unit').value,date=$('date').value,start=$('start').value,duration=$('duration').value,name=$('customer').value.trim(),phone=$('phone').value.trim(),address=$('address').value.trim();
+ if(!unit||!date||!start||!duration||!name||!phone)return;
+ const msg=`Halo PLAYBOX, saya ingin mengajukan booking:%0A%0APaket: ${encodeURIComponent(unit)}%0ATanggal: ${encodeURIComponent(date)}%0AJam mulai: ${encodeURIComponent(start)}%0ADurasi: ${encodeURIComponent(duration)}%0ANama: ${encodeURIComponent(name)}%0ANo. WA: ${encodeURIComponent(phone)}%0AAlamat: ${encodeURIComponent(address||'-')}%0A%0AMohon cek ketersediaan unit. Terima kasih.`;
+ $('result').hidden=false;
+ $('result').textContent='Permintaan booking sudah disiapkan. Silakan lanjutkan ke WhatsApp untuk konfirmasi.';
+ // Replace the number below with the official PlayBox admin WhatsApp number.
+ window.location.href='https://wa.me/6281445818426?text='+msg;
+});
+</script>
+</body></html>
