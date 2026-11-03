@@ -190,3 +190,39 @@ $('bookingForm').addEventListener('submit',async e=>{
 </body>
 </html>
 window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`, "_blank");
+async function api(path,options={}){
+async function api(path,options={}){
+ const response=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{
+  ...options,
+  headers:{
+   apikey:SUPABASE_ANON_KEY,
+   Authorization:`Bearer ${SUPABASE_ANON_KEY}`,
+   'Content-Type':'application/json',
+   ...(options.headers||{})
+  }
+ });
+
+ const responseText=await response.text();
+
+ if(!response.ok){
+  let message='Permintaan gagal. Coba lagi.';
+  if(responseText){
+   try{
+    const data=JSON.parse(responseText);
+    message=data.message||data.error||message;
+   }catch(e){
+    message=responseText.slice(0,300);
+   }
+  }
+  throw new Error(message);
+ }
+
+ if(!responseText)return null;
+
+ try{
+  return JSON.parse(responseText);
+ }catch(e){
+  return responseText;
+ }
+}
+window.location.href=`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`;
