@@ -88,8 +88,8 @@ $('unit').addEventListener('change',()=>{
  duration.innerHTML='<option value="">Pilih durasi</option>';
  (options[unit]||[]).forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;duration.appendChild(o)});
  duration.disabled=!unit;
- const midnight=duration.value.startsWith('Midnight');
- $('start').disabled=midnight;
+ $('start').disabled=false;
+ $('start').value='';
 });
 $('duration').addEventListener('change',()=>{
  const midnight=$('duration').value.startsWith('Midnight');
@@ -99,7 +99,6 @@ $('duration').addEventListener('change',()=>{
 });
 
 function addMinutes(date,minutes){return new Date(date.getTime()+minutes*60000)}
-function localDateTime(date){return `${dateOnly(date)}T${pad(date.getHours())}:${pad(date.getMinutes())}:00`}
 function calculateBooking(date,start,duration){
  const midnight=duration.startsWith('Midnight');
  const startDate=new Date(`${date}T${midnight?'00:00':start}:00`);
@@ -124,8 +123,22 @@ async function api(path,options={}){
    ...(options.headers||{})
   }
  });
- if(!response.ok){let message='Permintaan gagal. Coba lagi.';try{const data=await response.json();message=data.message||data.error||message}catch(e){}throw new Error(message)}
- return response.status===204?null:response.json();
+ const responseText=await response.text();
+ if(!response.ok){
+  let message='Permintaan gagal. Coba lagi.';
+  if(responseText){
+   try{
+    const data=JSON.parse(responseText);
+    message=data.message||data.error||message;
+   }catch(e){
+    message=responseText.slice(0,300);
+   }
+  }
+  throw new Error(message);
+ }
+ if(!responseText)return null;
+ try{return JSON.parse(responseText)}
+ catch(e){return responseText}
 }
 function prettyDate(value){
  const d=new Date(`${value}T12:00:00`);
@@ -136,7 +149,7 @@ async function loadBookings(){
  holder.innerHTML='<div class="empty">Memuat jadwal...</div>';
  try{
   const rows=await api('public_bookings?select=package_name,booking_date,end_date,start_time,end_time&order=booking_date.asc,start_time.asc');
-  if(!rows.length){holder.innerHTML='<div class="empty">Belum ada jadwal BOOKED.</div>';return}
+  if(!rows||!rows.length){holder.innerHTML='<div class="empty">Belum ada jadwal BOOKED.</div>';return}
   holder.innerHTML='';
   rows.forEach(row=>{
    const item=document.createElement('div');item.className='booking';
@@ -177,8 +190,11 @@ $('bookingForm').addEventListener('submit',async e=>{
    `Alamat: ${address||'-'}`,'','Status: PENDING — menunggu persetujuan admin.'
   ].join('\n');
   result.textContent='Permintaan berhasil disimpan sebagai PENDING. WhatsApp akan dibuka untuk mengirim pemberitahuan kepada admin.';
+  $('bookingForm').reset();
+  $('duration').disabled=true;
+  $('duration').innerHTML='<option value="">Pilih paket terlebih dahulu</option>';
+  $('start').disabled=false;
   window.location.href=`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`;
-  $('bookingForm').reset();$('duration').disabled=true;$('duration').innerHTML='<option value="">Pilih paket terlebih dahulu</option>';$('start').disabled=false;
  }catch(error){
   result.textContent='Belum berhasil menyimpan booking: '+error.message+'. Silakan hubungi admin melalui WhatsApp.';
   console.error(error);
@@ -189,40 +205,3 @@ $('bookingForm').addEventListener('submit',async e=>{
 </script>
 </body>
 </html>
-window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`, "_blank");
-async function api(path,options={}){
-async function api(path,options={}){
- const response=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{
-  ...options,
-  headers:{
-   apikey:SUPABASE_ANON_KEY,
-   Authorization:`Bearer ${SUPABASE_ANON_KEY}`,
-   'Content-Type':'application/json',
-   ...(options.headers||{})
-  }
- });
-
- const responseText=await response.text();
-
- if(!response.ok){
-  let message='Permintaan gagal. Coba lagi.';
-  if(responseText){
-   try{
-    const data=JSON.parse(responseText);
-    message=data.message||data.error||message;
-   }catch(e){
-    message=responseText.slice(0,300);
-   }
-  }
-  throw new Error(message);
- }
-
- if(!responseText)return null;
-
- try{
-  return JSON.parse(responseText);
- }catch(e){
-  return responseText;
- }
-}
-window.location.href=`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`;
