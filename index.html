@@ -1,108 +1,234 @@
+
 <!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07152d">
-<title>PLAYBOX — Play at Home</title>
+<title>Esa's PlayBox Tomohon — Play at Home</title>
 <style>
 :root{--bg:#061226;--panel:#0c1d39;--line:#203a62;--blue:#168cff;--cyan:#12d7f4;--white:#f4f8ff;--muted:#a9bad2}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#102c55 0,#061226 48%);color:var(--white);font-family:Arial,sans-serif}
-.wrap{max-width:760px;margin:auto;padding:20px 15px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{font-weight:900;font-size:22px;letter-spacing:1px}.tag{color:var(--cyan);font-size:12px;letter-spacing:3px;margin-top:5px}
-.hero{padding:34px 0 20px}.hero h1{font-size:clamp(30px,7vw,48px);margin:0 0 10px}.hero p{color:var(--muted);line-height:1.55;margin:0}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 12px;color:#d8e8ff;font-size:13px}
-h2{font-size:20px;margin:28px 0 13px}.packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.pkg{background:linear-gradient(145deg,#102849,#0a1830);border:1px solid var(--line);border-radius:15px;padding:14px}.pkg h3{margin:0 0 5px;font-size:16px}.pkg .sub{font-size:12px;color:var(--muted);margin-bottom:9px}.pkg strong{color:#fff}.price{font-size:13px;line-height:1.7;color:#d7e7ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0,#102c55 0,#061226 48%);color:var(--white);font-family:Arial,sans-serif}
+.wrap{max-width:760px;margin:auto;padding:20px 15px 50px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:900;font-size:22px;letter-spacing:1px}
+.tag{color:var(--cyan);font-size:12px;letter-spacing:3px;margin-top:5px}
+.hero{padding:34px 0 20px}
+.hero h1{font-size:clamp(30px,7vw,48px);margin:0 0 10px}
+.hero p{color:var(--muted);line-height:1.55;margin:0}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:9px 12px;color:#d8e8ff;font-size:13px}
+h2{font-size:20px;margin:28px 0 13px}
+.packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pkg{background:linear-gradient(145deg,#102849,#0a1830);border:1px solid var(--line);border-radius:15px;padding:14px}
+.pkg h3{margin:0 0 5px;font-size:16px}
+.pkg .sub{font-size:12px;color:var(--muted);margin-bottom:9px}
+.pkg strong{color:#fff}
+.price{font-size:13px;line-height:1.7;color:#d7e7ff}
 .panel{background:#0b1a32;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:12px}
 label{display:block;font-size:13px;color:#c4d4e9;margin:12px 0 6px}
 input,select,textarea{width:100%;background:#07152a;border:1px solid #294568;border-radius:10px;padding:12px;color:white;font-size:15px}
-button,.btn{border:0;border-radius:11px;background:linear-gradient(90deg,#087cff,#05b7ef);color:white;font-weight:800;padding:14px 18px;font-size:15px;width:100%;margin-top:16px;cursor:pointer}
-button:disabled{opacity:.55;cursor:wait}.note{font-size:12px;color:var(--muted);line-height:1.5}.status{padding:12px;border-radius:10px;background:#0d2943;color:#bfeaff;margin-top:12px;font-size:13px}
-.bookings{display:grid;gap:8px}.booking{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;color:#d9e8fa}.booking b{color:#fff}.empty{color:var(--muted);font-size:13px;padding:12px 0}
+button{border:0;border-radius:11px;background:linear-gradient(90deg,#087cff,#05b7ef);color:white;font-weight:800;padding:14px 18px;font-size:15px;width:100%;margin-top:16px;cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.status{padding:12px;border-radius:10px;background:#0d2943;color:#bfeaff;margin-top:12px;font-size:13px}
+.bookings{display:grid;gap:8px}
+.booking{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;color:#d9e8fa}
+.booking b{color:#fff}
+.empty{color:var(--muted);font-size:13px;padding:12px 0}
 footer{text-align:center;color:#7890ae;font-size:12px;padding:28px 0 0}
 @media(max-width:420px){.packages{grid-template-columns:1fr}.wrap{padding:17px 13px 40px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="top"><div><div class="brand">🎮 PLAYBOX</div><div class="tag">PLAY AT HOME</div></div><div class="pill">RENTAL PS4 & PS5</div></header>
-  <section class="hero">
-    <h1>Main Seru,<br>Langsung di Rumah.</h1>
-    <p>Pilih paket PlayStation, tentukan tanggal dan jam sewa, lalu kirim permintaan booking melalui WhatsApp.</p>
-    <div class="pills"><span class="pill">🚚 Play at Home</span><span class="pill">🎮 2 stik</span><span class="pill">🕙 10.00–00.00</span></div>
-  </section>
-  <h2>Daftar Paket Harga</h2>
-  <section class="packages">
-    <article class="pkg"><h3>PS4 SMALL</h3><div class="sub">24 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp30.000</strong><br>6 jam <strong>Rp45.000</strong><br>12 jam <strong>Rp85.000</strong><br>1 hari <strong>Rp125.000</strong><br>Midnight 00.00–08.00 <strong>Rp45.000</strong></div></article>
-    <article class="pkg"><h3>PS5</h3><div class="sub">32 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp60.000</strong><br>6 jam <strong>Rp100.000</strong><br>12 jam <strong>Rp150.000</strong><br>Tambahan <strong>Rp20.000/jam</strong><br>Midnight 00.00–08.00 <strong>Rp85.000</strong></div></article>
-    <article class="pkg"><h3>PS4 MEDIUM</h3><div class="sub">27 INCH · 2 STIK</div><div class="price">3 jam <strong>Rp35.000</strong><br>6 jam <strong>Rp55.000</strong><br>12 jam <strong>Rp90.000</strong><br>1 hari <strong>Rp130.000</strong><br>Midnight 00.00–08.00 <strong>Rp50.000</strong></div></article>
-    <article class="pkg"><h3>PS4 BIG</h3><div class="sub">32 INCH · 2 STIK</div><div class="price">2 jam <strong>Rp30.000</strong><br>4 jam <strong>Rp55.000</strong><br>6 jam <strong>Rp65.000</strong><br>1 hari <strong>Rp150.000</strong><br>&gt;6 jam tambahan <strong>Rp10.000/jam</strong><br>Midnight 00.00–08.00 <strong>Rp60.000</strong></div></article>
-  </section>
 
-  <h2>Jadwal Booking</h2>
-  <section class="panel">
-    <p class="note">Jadwal di bawah hanya menampilkan booking yang sudah disetujui admin. Data pelanggan tidak ditampilkan.</p>
-    <div id="publicBookings" class="bookings"><div class="empty">Memuat jadwal...</div></div>
-    <button type="button" id="refreshBookings">Muat ulang jadwal</button>
-  </section>
+<header class="top">
+  <div>
+    <div class="brand">🎮 ESA'S PLAYBOX TOMOHON</div>
+    <div class="tag">PLAY AT HOME</div>
+  </div>
+  <div class="pill">RENTAL PS4 & PS5</div>
+</header>
 
-  <h2>Booking PlayStation</h2>
-  <section class="panel">
-    <form id="bookingForm">
-      <label for="unit">Pilih paket</label>
-      <select id="unit" required><option value="">Pilih paket</option><option>PS4 SMALL</option><option>PS4 MEDIUM</option><option>PS4 BIG</option><option>PS5</option></select>
-      <label for="date">Tanggal sewa</label><input id="date" type="date" required>
-      <label for="start">Jam mulai</label><input id="start" type="time" min="10:00" max="23:00" required>
-      <label for="duration">Durasi / paket</label>
-      <select id="duration" required disabled><option value="">Pilih paket terlebih dahulu</option></select>
-      <label for="customer">Nama pelanggan</label><input id="customer" placeholder="Nama kamu" required>
-      <label for="phone">Nomor WhatsApp</label><input id="phone" type="tel" placeholder="08xxxxxxxxxx" required>
-      <label for="address">Alamat pengantaran</label><textarea id="address" rows="2" placeholder="Alamat lengkap"></textarea>
-      <button id="submitButton" type="submit">Kirim Permintaan Booking</button>
-      <p class="note">Booking berstatus PENDING sampai admin memeriksa dan menyetujuinya. Jadwal BOOKED baru tampil setelah disetujui.</p>
-    </form>
-    <div id="result" class="status" hidden aria-live="polite"></div>
-  </section>
-  <div class="panel note">Setiap paket hanya tersedia 1 unit. Mengirim permintaan belum menjamin jadwal tersedia. Admin akan memeriksa jadwal dan menghubungi kamu melalui WhatsApp.</div>
-  <footer>© PLAYBOX — PLAY AT HOME</footer>
+<section class="hero">
+  <h1>Main Seru,<br>Langsung di Rumah.</h1>
+  <p>Pilih paket PlayStation, tentukan tanggal dan jam sewa, lalu kirim permintaan booking melalui WhatsApp.</p>
+  <div class="pills">
+    <span class="pill">🚚 Play at Home</span>
+    <span class="pill">🎮 2 stik</span>
+    <span class="pill">🕙 10.00–00.00</span>
+  </div>
+</section>
+
+<h2>Daftar Paket Harga</h2>
+<section class="packages">
+
+<article class="pkg">
+<h3>PS4 SMALL</h3>
+<div class="sub">24 INCH · 2 STIK</div>
+<div class="price">
+3 jam <strong>Rp30.000</strong><br>
+6 jam <strong>Rp45.000</strong><br>
+12 jam <strong>Rp85.000</strong><br>
+1 hari <strong>Rp125.000</strong><br>
+Midnight 00.00–08.00 <strong>Rp45.000</strong>
 </div>
+</article>
+
+<article class="pkg">
+<h3>PS5</h3>
+<div class="sub">32 INCH · 2 STIK</div>
+<div class="price">
+3 jam <strong>Rp60.000</strong><br>
+6 jam <strong>Rp100.000</strong><br>
+12 jam <strong>Rp150.000</strong><br>
+Tambahan <strong>Rp20.000/jam</strong><br>
+Midnight 00.00–08.00 <strong>Rp85.000</strong>
+</div>
+</article>
+
+<article class="pkg">
+<h3>PS4 MEDIUM</h3>
+<div class="sub">27 INCH · 2 STIK</div>
+<div class="price">
+3 jam <strong>Rp35.000</strong><br>
+6 jam <strong>Rp55.000</strong><br>
+12 jam <strong>Rp90.000</strong><br>
+1 hari <strong>Rp130.000</strong><br>
+Midnight 00.00–08.00 <strong>Rp50.000</strong>
+</div>
+</article>
+
+<article class="pkg">
+<h3>PS4 BIG</h3>
+<div class="sub">32 INCH · 2 STIK</div>
+<div class="price">
+2 jam <strong>Rp30.000</strong><br>
+4 jam <strong>Rp55.000</strong><br>
+6 jam <strong>Rp65.000</strong><br>
+1 hari <strong>Rp150.000</strong><br>
+&gt;6 jam tambahan <strong>Rp10.000/jam</strong><br>
+Midnight 00.00–08.00 <strong>Rp60.000</strong>
+</div>
+</article>
+
+</section>
+
+<h2>Jadwal Booking</h2>
+<section class="panel">
+<p class="note">Jadwal di bawah hanya menampilkan booking yang sudah disetujui admin. Data pelanggan tidak ditampilkan.</p>
+<div id="publicBookings" class="bookings">
+<div class="empty">Memuat jadwal...</div>
+</div>
+<button type="button" id="refreshBookings">Muat ulang jadwal</button>
+</section>
+
+<h2>Booking PlayStation</h2>
+<section class="panel">
+<form id="bookingForm">
+
+<label for="unit">Pilih paket</label>
+<select id="unit" required>
+<option value="">Pilih paket</option>
+<option>PS4 SMALL</option>
+<option>PS4 MEDIUM</option>
+<option>PS4 BIG</option>
+<option>PS5</option>
+</select>
+
+<label for="date">Tanggal sewa</label>
+<input id="date" type="date" required>
+
+<label for="start">Jam mulai</label>
+<input id="start" type="time" min="10:00" max="23:00" required>
+
+<label for="duration">Durasi / paket</label>
+<select id="duration" required disabled>
+<option value="">Pilih paket terlebih dahulu</option>
+</select>
+
+<label for="customer">Nama pelanggan</label>
+<input id="customer" placeholder="Nama kamu" required>
+
+<label for="phone">Nomor WhatsApp</label>
+<input id="phone" type="tel" placeholder="08xxxxxxxxxx" required>
+
+<label for="address">Alamat pengantaran</label>
+<textarea id="address" rows="2" placeholder="Alamat lengkap"></textarea>
+
+<button id="submitButton" type="submit">Kirim Permintaan Booking</button>
+<p class="note">Booking berstatus PENDING sampai admin memeriksa dan menyetujuinya. Jadwal BOOKED baru tampil setelah disetujui.</p>
+</form>
+<div id="result" class="status" hidden aria-live="polite"></div>
+</section>
+
+<div class="panel note">
+Setiap paket hanya tersedia 1 unit. Mengirim permintaan belum menjamin jadwal tersedia. Admin akan memeriksa jadwal dan menghubungi kamu melalui WhatsApp.
+</div>
+
+<footer>© ESA'S PLAYBOX TOMOHON — PLAY AT HOME</footer>
+</div>
+
 <script>
 const SUPABASE_URL='https://jokoevwsswssanvrdcwi.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_ofoUquHWaIZxbOJ7QvJArA_fcu0gt8b';
 const ADMIN_WA='6281445818426';
+
 const $=id=>document.getElementById(id);
+
 const options={
  'PS4 SMALL':['3 jam','6 jam','12 jam','1 hari','Midnight 00.00–08.00'],
  'PS4 MEDIUM':['3 jam','6 jam','12 jam','1 hari','Midnight 00.00–08.00'],
  'PS4 BIG':['2 jam','4 jam','6 jam','1 hari','Midnight 00.00–08.00'],
  'PS5':['3 jam','6 jam','12 jam','Midnight 00.00–08.00']
 };
+
 const pad=n=>String(n).padStart(2,'0');
 const dateOnly=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const dateInput=$('date');
-dateInput.min=dateOnly(new Date());
+
+$('date').min=dateOnly(new Date());
 
 $('unit').addEventListener('change',()=>{
- const unit=$('unit').value, duration=$('duration');
+ const unit=$('unit').value;
+ const duration=$('duration');
+
  duration.innerHTML='<option value="">Pilih durasi</option>';
- (options[unit]||[]).forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;duration.appendChild(o)});
+
+ (options[unit]||[]).forEach(v=>{
+  const o=document.createElement('option');
+  o.value=v;
+  o.textContent=v;
+  duration.appendChild(o);
+ });
+
  duration.disabled=!unit;
  $('start').disabled=false;
  $('start').value='';
 });
+
 $('duration').addEventListener('change',()=>{
  const midnight=$('duration').value.startsWith('Midnight');
  $('start').disabled=midnight;
- if(midnight)$('start').value='00:00';
- else if($('start').value==='00:00')$('start').value='';
+
+ if(midnight){
+  $('start').value='00:00';
+ }else if($('start').value==='00:00'){
+  $('start').value='';
+ }
 });
 
-function addMinutes(date,minutes){return new Date(date.getTime()+minutes*60000)}
+function addMinutes(date,minutes){
+ return new Date(date.getTime()+minutes*60000);
+}
+
 function calculateBooking(date,start,duration){
  const midnight=duration.startsWith('Midnight');
  const startDate=new Date(`${date}T${midnight?'00:00':start}:00`);
+
  let minutes=0;
+
  if(midnight)minutes=8*60;
  else if(duration==='2 jam')minutes=120;
  else if(duration==='3 jam')minutes=180;
@@ -110,9 +236,19 @@ function calculateBooking(date,start,duration){
  else if(duration==='6 jam')minutes=360;
  else if(duration==='12 jam')minutes=720;
  else if(duration==='1 hari')minutes=1440;
+
  const endDate=addMinutes(startDate,minutes);
- return {startDate,endDate,startTime:`${pad(startDate.getHours())}:${pad(startDate.getMinutes())}:00`,endTime:`${pad(endDate.getHours())}:${pad(endDate.getMinutes())}:00`,bookingDate:dateOnly(startDate),endDateOnly:dateOnly(endDate)};
+
+ return {
+  startDate,
+  endDate,
+  startTime:`${pad(startDate.getHours())}:${pad(startDate.getMinutes())}:00`,
+  endTime:`${pad(endDate.getHours())}:${pad(endDate.getMinutes())}:00`,
+  bookingDate:dateOnly(startDate),
+  endDateOnly:dateOnly(endDate)
+ };
 }
+
 async function api(path,options={}){
  const response=await fetch(`${SUPABASE_URL}/rest/v1/${path}`,{
   ...options,
@@ -123,9 +259,12 @@ async function api(path,options={}){
    ...(options.headers||{})
   }
  });
+
  const responseText=await response.text();
+
  if(!response.ok){
   let message='Permintaan gagal. Coba lagi.';
+
   if(responseText){
    try{
     const data=JSON.parse(responseText);
@@ -134,72 +273,153 @@ async function api(path,options={}){
     message=responseText.slice(0,300);
    }
   }
+
   throw new Error(message);
  }
+
  if(!responseText)return null;
- try{return JSON.parse(responseText)}
- catch(e){return responseText}
+
+ try{
+  return JSON.parse(responseText);
+ }catch(e){
+  return responseText;
+ }
 }
+
 function prettyDate(value){
  const d=new Date(`${value}T12:00:00`);
- return d.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+ return d.toLocaleDateString('id-ID',{
+  day:'numeric',
+  month:'long',
+  year:'numeric'
+ });
 }
+
 async function loadBookings(){
  const holder=$('publicBookings');
  holder.innerHTML='<div class="empty">Memuat jadwal...</div>';
+
  try{
-  const rows=await api('public_bookings?select=package_name,booking_date,end_date,start_time,end_time&order=booking_date.asc,start_time.asc');
-  if(!rows||!rows.length){holder.innerHTML='<div class="empty">Belum ada jadwal BOOKED.</div>';return}
+  const rows=await api(
+   'public_bookings?select=package_name,booking_date,end_date,start_time,end_time&order=booking_date.asc,start_time.asc'
+  );
+
+  if(!rows||!rows.length){
+   holder.innerHTML='<div class="empty">Belum ada jadwal BOOKED.</div>';
+   return;
+  }
+
   holder.innerHTML='';
+
   rows.forEach(row=>{
-   const item=document.createElement('div');item.className='booking';
+   const item=document.createElement('div');
+   item.className='booking';
+
    const endDate=row.end_date||row.booking_date;
    const time=(row.start_time||'').slice(0,5)+'–'+(row.end_time||'').slice(0,5);
-   item.innerHTML=`<b>${row.package_name}</b><br>${prettyDate(row.booking_date)}${endDate!==row.booking_date?' – '+prettyDate(endDate):''}<br>${time} · <b>BOOKED</b>`;
+
+   const title=document.createElement('b');
+   title.textContent=row.package_name;
+
+   const dateLine=document.createElement('div');
+   dateLine.textContent=prettyDate(row.booking_date)+
+    (endDate!==row.booking_date?' – '+prettyDate(endDate):'');
+
+   const timeLine=document.createElement('div');
+   timeLine.textContent=time+' · BOOKED';
+
+   item.appendChild(title);
+   item.appendChild(document.createElement('br'));
+   item.appendChild(dateLine);
+   item.appendChild(timeLine);
+
    holder.appendChild(item);
   });
+
  }catch(error){
   holder.innerHTML='<div class="empty">Jadwal belum bisa dimuat. Silakan coba muat ulang.</div>';
   console.error(error);
  }
 }
+
 $('refreshBookings').addEventListener('click',loadBookings);
 loadBookings();
 
 $('bookingForm').addEventListener('submit',async e=>{
  e.preventDefault();
- const unit=$('unit').value,date=$('date').value,start=$('start').value,duration=$('duration').value;
- const name=$('customer').value.trim(),phone=$('phone').value.trim(),address=$('address').value.trim();
- if(!unit||!date||!duration||!name||!phone||(!duration.startsWith('Midnight')&&!start))return;
- const result=$('result'),button=$('submitButton');
- button.disabled=true;button.textContent='Mengirim...';result.hidden=false;result.textContent='Menyimpan permintaan booking...';
+
+ const unit=$('unit').value;
+ const date=$('date').value;
+ const start=$('start').value;
+ const duration=$('duration').value;
+ const name=$('customer').value.trim();
+ const phone=$('phone').value.trim();
+ const address=$('address').value.trim();
+
+ if(!unit||!date||!duration||!name||!phone||
+    (!duration.startsWith('Midnight')&&!start)){
+  return;
+ }
+
+ const result=$('result');
+ const button=$('submitButton');
+
+ button.disabled=true;
+ button.textContent='Mengirim...';
+ result.hidden=false;
+ result.textContent='Menyimpan permintaan booking...';
+
  try{
   const slot=calculateBooking(date,start,duration);
+
   const payload={
-   customer_name:name,customer_phone:phone,package_name:unit,
-   booking_date:slot.bookingDate,end_date:slot.endDateOnly,
-   start_time:slot.startTime,end_time:slot.endTime,
-   address:address||null,status:'pending'
+   customer_name:name,
+   customer_phone:phone,
+   package_name:unit,
+   booking_date:slot.bookingDate,
+   end_date:slot.endDateOnly,
+   start_time:slot.startTime,
+   end_time:slot.endTime,
+   address:address||null,
+   status:'pending'
   };
-  await api('bookings',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(payload)});
+
+  await api('bookings',{
+   method:'POST',
+   headers:{Prefer:'return=minimal'},
+   body:JSON.stringify(payload)
+  });
+
   const message=[
-   'Halo PLAYBOX, ada permintaan booking baru:',
-   '',`Paket: ${unit}`,`Tanggal: ${slot.bookingDate}`,
+   'Halo ESA\'S PLAYBOX TOMOHON, ada permintaan booking baru:',
+   '',
+   `Paket: ${unit}`,
+   `Tanggal: ${slot.bookingDate}`,
    `Jam: ${slot.startTime.slice(0,5)}–${slot.endTime.slice(0,5)}`,
-   `Durasi: ${duration}`,`Nama: ${name}`,`No. WA: ${phone}`,
-   `Alamat: ${address||'-'}`,'','Status: PENDING — menunggu persetujuan admin.'
+   `Durasi: ${duration}`,
+   `Nama: ${name}`,
+   `No. WA: ${phone}`,
+   `Alamat: ${address||'-'}`,
+   '',
+   'Status: PENDING — menunggu persetujuan admin.'
   ].join('\n');
-  result.textContent='Permintaan berhasil disimpan sebagai PENDING. WhatsApp akan dibuka untuk mengirim pemberitahuan kepada admin.';
+
+  result.textContent='Booking berhasil disimpan sebagai PENDING. WhatsApp akan dibuka untuk mengirim pemberitahuan kepada admin.';
+
   $('bookingForm').reset();
   $('duration').disabled=true;
   $('duration').innerHTML='<option value="">Pilih paket terlebih dahulu</option>';
   $('start').disabled=false;
+
   window.location.href=`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`;
+
  }catch(error){
   result.textContent='Belum berhasil menyimpan booking: '+error.message+'. Silakan hubungi admin melalui WhatsApp.';
   console.error(error);
+
  }finally{
-  button.disabled=false;button.textContent='Kirim Permintaan Booking';
+  button.disabled=false;
+  button.textContent='Kirim Permintaan Booking';
  }
 });
 </script>
